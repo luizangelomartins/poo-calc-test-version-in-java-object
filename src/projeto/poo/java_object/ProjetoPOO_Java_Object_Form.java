@@ -9,14 +9,60 @@
 package projeto.poo.java_object;
 
 
+// IMPORTAÇÃO DE BIBLIOTECAS:
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
+
+
 // MÉTODO PRINCIPAL DA CLASSE:
 public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
 
     
     // DECLARAÇÃO DE VARIAVEIS E OBJETOS:
+    BasicComboBoxRenderer.UIResource UIResource = new BasicComboBoxRenderer.UIResource();  
+    
+    
+    // " INICIALIZADOR ":
     public ProjetoPOO_Java_Object_Form() {
         
         initComponents();
+        ImageIcon icone = new ImageIcon(getClass().getResource("/icones/calculator_edit.png"));
+        setIconImage(icone.getImage());
+        
+        txt_resultado.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_numerador_valor1.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_numerador_valor2.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_denominador_valor1.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_denominador_valor2.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_campo_temperatura.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        
+        UIResource.setHorizontalAlignment(SwingConstants.CENTER);  
+        txt_escolha_de_operacao.setRenderer(UIResource);
+        txt_escolha_de_operacao.removeAllItems();
+        
+        int contador_numerico = 0;
+        while( contador_numerico != 13 ) {
+        
+            if( contador_numerico == 0 ) { txt_escolha_de_operacao.addItem("ESCOLHA UMA OPÇÃO"); }
+            if( contador_numerico == 1 ) { txt_escolha_de_operacao.addItem("CALCULO DE MMC"); }
+            if( contador_numerico == 2 ) { txt_escolha_de_operacao.addItem("SOMAR FRAÇÃO"); }
+            if( contador_numerico == 3 ) { txt_escolha_de_operacao.addItem("SUBTRAIR FRAÇÃO"); }
+            if( contador_numerico == 4 ) { txt_escolha_de_operacao.addItem("MULTIPLICAR FRAÇÃO"); }
+            if( contador_numerico == 5 ) { txt_escolha_de_operacao.addItem("DIVIDIR FRAÇÃO"); }
+            if( contador_numerico == 6 ) { txt_escolha_de_operacao.addItem("CALCULO DE IMC"); }
+            if( contador_numerico == 7 ) { txt_escolha_de_operacao.addItem("CONVERTER CELSIUS PARA KELVIN"); }
+            if( contador_numerico == 8 ) { txt_escolha_de_operacao.addItem("CELSIUS PARA FAHRENHEIT"); }
+            if( contador_numerico == 9 ) { txt_escolha_de_operacao.addItem("KELVIN PARA CELSIUS"); }
+            if( contador_numerico == 10 ) { txt_escolha_de_operacao.addItem("KELVIN PARA FAHRENHEIT"); }
+            if( contador_numerico == 11 ) { txt_escolha_de_operacao.addItem("FAHRENHEIT PARA CELSIUS"); }
+            if( contador_numerico == 12 ) { txt_escolha_de_operacao.addItem("FAHRENHEIT PARA KELVIN"); }
+            contador_numerico++;
+            
+        }
+        
+        txt_escolha_de_operacao.setSelectedIndex(0);
         
     }
 
@@ -30,24 +76,225 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        txt_resultado = new javax.swing.JLabel();
+        txt_numerador_valor1 = new javax.swing.JTextField();
+        txt_campo_temperatura = new javax.swing.JTextField();
+        txt_denominador_valor2 = new javax.swing.JTextField();
+        txt_denominador_valor1 = new javax.swing.JTextField();
+        txt_botao_calculo = new javax.swing.JButton();
+        txt_escolha_de_operacao = new javax.swing.JComboBox<>();
+        txt_botao_limpar_liberar = new javax.swing.JButton();
+        txt_numerador_valor2 = new javax.swing.JTextField();
+        txt_barra_de_menu_principal = new javax.swing.JMenuBar();
+        txt_menu_geral = new javax.swing.JMenu();
+        txt_sub_item_sair = new javax.swing.JMenuItem();
+        txt_menu_sobre = new javax.swing.JMenu();
+        txt_sub_item_info = new javax.swing.JMenuItem();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("PROJETO DE CALCULO");
         setResizable(false);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- EXIBIÇÃO GERAL -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_resultado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/calculator_link.png"))); // NOI18N
+        txt_resultado.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- RESULTADO -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_numerador_valor1.setToolTipText("");
+        txt_numerador_valor1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- NUMERADOR 001 -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_campo_temperatura.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- TEMPERATURA -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_denominador_valor2.setToolTipText("");
+        txt_denominador_valor2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- DENOMINADOR 02 -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_denominador_valor1.setToolTipText("");
+        txt_denominador_valor1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- DENOMINADOR 01 -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_botao_calculo.setBackground(new java.awt.Color(153, 255, 153));
+        txt_botao_calculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/calculator_add.png"))); // NOI18N
+        txt_botao_calculo.setText("CALCULAR");
+        txt_botao_calculo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        txt_botao_calculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_botao_calculoActionPerformed(evt);
+            }
+        });
+
+        txt_escolha_de_operacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        txt_escolha_de_operacao.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- OPERAÇÃO -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        txt_botao_limpar_liberar.setBackground(new java.awt.Color(153, 153, 255));
+        txt_botao_limpar_liberar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/calculator_delete.png"))); // NOI18N
+        txt_botao_limpar_liberar.setText("LIMPAR E LIBERAR");
+        txt_botao_limpar_liberar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        txt_botao_limpar_liberar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_botao_limpar_liberarActionPerformed(evt);
+            }
+        });
+
+        txt_numerador_valor2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- NUMERADOR 002 -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txt_numerador_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(txt_numerador_valor2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txt_denominador_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_denominador_valor2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txt_botao_limpar_liberar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(txt_botao_calculo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_escolha_de_operacao, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_campo_temperatura, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txt_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txt_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_numerador_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_numerador_valor2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_denominador_valor2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_denominador_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_campo_temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txt_escolha_de_operacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_botao_calculo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_botao_limpar_liberar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        txt_menu_geral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/script_gear.png"))); // NOI18N
+        txt_menu_geral.setText("GERAL");
+
+        txt_sub_item_sair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        txt_sub_item_sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/cancel.png"))); // NOI18N
+        txt_sub_item_sair.setText("SAIR");
+        txt_sub_item_sair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_sub_item_sairActionPerformed(evt);
+            }
+        });
+        txt_menu_geral.add(txt_sub_item_sair);
+
+        txt_barra_de_menu_principal.add(txt_menu_geral);
+
+        txt_menu_sobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/information.png"))); // NOI18N
+        txt_menu_sobre.setText("SOBRE");
+
+        txt_sub_item_info.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        txt_sub_item_info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/error.png"))); // NOI18N
+        txt_sub_item_info.setText("INFO");
+        txt_sub_item_info.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_sub_item_infoActionPerformed(evt);
+            }
+        });
+        txt_menu_sobre.add(txt_sub_item_info);
+
+        txt_barra_de_menu_principal.add(txt_menu_sobre);
+
+        setJMenuBar(txt_barra_de_menu_principal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    // BOTÃO CALCULAR:
+    private void txt_botao_calculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_botao_calculoActionPerformed
+
+        JOptionPane.showMessageDialog(null, "ESTA FUNÇÃO ESTÁ EM DESENVOLVIMENTO!", "ADVERTÊNCIA:", 2);
+        
+    }//GEN-LAST:event_txt_botao_calculoActionPerformed
+
+    
+    // BOTÃO LIMPAR E LIBERAR:
+    private void txt_botao_limpar_liberarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_botao_limpar_liberarActionPerformed
+
+        JOptionPane.showMessageDialog(null, "ESTA FUNÇÃO ESTÁ EM DESENVOLVIMENTO!", "ADVERTÊNCIA:", 2);
+        
+    }//GEN-LAST:event_txt_botao_limpar_liberarActionPerformed
+
+    
+    // SUB ITEM DE MENU - SAIR - [ MENU GERAL ]:
+    private void txt_sub_item_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_sub_item_sairActionPerformed
+        
+        int confirmar_sair = 0;
+        confirmar_sair = 0;
+        confirmar_sair = JOptionPane.showConfirmDialog(null, "REALMENTE DESEJA SAIR ?");
+
+        if ( confirmar_sair == 0 ) {
+
+            this.dispose();
+
+        }
+
+    }//GEN-LAST:event_txt_sub_item_sairActionPerformed
+
+    
+    // SUB ITEM DE MENU - INFO - [ MENU SOBRE ]:
+    private void txt_sub_item_infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_sub_item_infoActionPerformed
+        
+        JOptionPane.showMessageDialog(null, "PROJETO DE CALCULOS QUE CONSISTE EM:\n"
+                + " - CALCULO DE MMC,\n"
+                + " - SOMAR FRAÇÃO,\n"
+                + " - SUBTRAIR FRAÇÃO,\n"
+                + " - MULTIPLICAR FRAÇÃO,\n"
+                + " - DIVIDIR FRAÇÃO,\n"
+                + " - CALCULO DE IMC,\n"
+                + " - CONVERTER CELSIUS PARA KELVIN,\n"
+                + " - CELSIUS PARA FAHRENHEIT,\n"
+                + " - KELVIN PARA CELSIUS,\n"
+                + " - KELVIN PARA FAHRENHEIT,\n"
+                + " - FAHRENHEIT PARA CELSIUS,\n"
+                + " - FAHRENHEIT PARA KELVIN.", "INFORMAÇÃO:", 1);
+        
+    }//GEN-LAST:event_txt_sub_item_infoActionPerformed
 
     
     /**
@@ -86,6 +333,31 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuBar txt_barra_de_menu_principal;
+    private javax.swing.JButton txt_botao_calcular;
+    private javax.swing.JButton txt_botao_calculo;
+    private javax.swing.JButton txt_botao_limpar_e_liberar;
+    private javax.swing.JButton txt_botao_limpar_liberar;
+    private javax.swing.JTextField txt_campo_potencia_base;
+    private javax.swing.JTextField txt_campo_potencia_expoente;
+    private javax.swing.JTextField txt_campo_radiciacao;
+    private javax.swing.JLabel txt_campo_resultado;
+    private javax.swing.JTextField txt_campo_temperatura;
+    private javax.swing.JTextField txt_campo_valor1;
+    private javax.swing.JTextField txt_campo_valor2;
+    private javax.swing.JTextField txt_denominador_valor1;
+    private javax.swing.JTextField txt_denominador_valor2;
+    private javax.swing.JComboBox<String> txt_escolha_de_operacao;
+    private javax.swing.JMenu txt_menu_geral;
+    private javax.swing.JMenu txt_menu_sobre;
+    private javax.swing.JTextField txt_numerador_valor1;
+    private javax.swing.JTextField txt_numerador_valor2;
+    private javax.swing.JComboBox<String> txt_operacao;
+    private javax.swing.JPanel txt_painel_principal;
+    private javax.swing.JLabel txt_resultado;
+    private javax.swing.JMenuItem txt_sub_item_info;
+    private javax.swing.JMenuItem txt_sub_item_sair;
     // End of variables declaration//GEN-END:variables
 }
 
