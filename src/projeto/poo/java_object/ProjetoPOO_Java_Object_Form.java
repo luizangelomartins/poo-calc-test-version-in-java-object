@@ -10,6 +10,9 @@ package projeto.poo.java_object;
 
 
 // IMPORTAÇÃO DE BIBLIOTECAS:
+import java.awt.event.KeyEvent;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -21,6 +24,7 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
 
     
     // DECLARAÇÃO DE VARIAVEIS E OBJETOS:
+    int controle_botao = 0;
     BasicComboBoxRenderer.UIResource UIResource = new BasicComboBoxRenderer.UIResource();  
     
     
@@ -30,13 +34,23 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
         initComponents();
         ImageIcon icone = new ImageIcon(getClass().getResource("/icones/calculator_edit.png"));
         setIconImage(icone.getImage());
+        txt_botao_limpar_liberar.setEnabled(false);
+        
+        txt_numerador_valor1.setText("");
+        txt_numerador_valor2.setText("");
+        txt_denominador_valor1.setText("");
+        txt_denominador_valor2.setText("");
+        txt_campo_temperatura.setText("");
         
         txt_resultado.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_operacao_solicitada.setHorizontalAlignment(javax.swing.JLabel.CENTER);
         txt_numerador_valor1.setHorizontalAlignment(javax.swing.JLabel.CENTER);
         txt_numerador_valor2.setHorizontalAlignment(javax.swing.JLabel.CENTER);
         txt_denominador_valor1.setHorizontalAlignment(javax.swing.JLabel.CENTER);
         txt_denominador_valor2.setHorizontalAlignment(javax.swing.JLabel.CENTER);
         txt_campo_temperatura.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_campo_peso.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        txt_campo_altura.setHorizontalAlignment(javax.swing.JLabel.CENTER);
         
         UIResource.setHorizontalAlignment(SwingConstants.CENTER);  
         txt_escolha_de_operacao.setRenderer(UIResource);
@@ -46,18 +60,18 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
         while( contador_numerico != 13 ) {
         
             if( contador_numerico == 0 ) { txt_escolha_de_operacao.addItem("ESCOLHA UMA OPÇÃO"); }
-            if( contador_numerico == 1 ) { txt_escolha_de_operacao.addItem("CALCULO DE MMC"); }
-            if( contador_numerico == 2 ) { txt_escolha_de_operacao.addItem("SOMAR FRAÇÃO"); }
-            if( contador_numerico == 3 ) { txt_escolha_de_operacao.addItem("SUBTRAIR FRAÇÃO"); }
-            if( contador_numerico == 4 ) { txt_escolha_de_operacao.addItem("MULTIPLICAR FRAÇÃO"); }
-            if( contador_numerico == 5 ) { txt_escolha_de_operacao.addItem("DIVIDIR FRAÇÃO"); }
-            if( contador_numerico == 6 ) { txt_escolha_de_operacao.addItem("CALCULO DE IMC"); }
-            if( contador_numerico == 7 ) { txt_escolha_de_operacao.addItem("CONVERTER CELSIUS PARA KELVIN"); }
-            if( contador_numerico == 8 ) { txt_escolha_de_operacao.addItem("CELSIUS PARA FAHRENHEIT"); }
-            if( contador_numerico == 9 ) { txt_escolha_de_operacao.addItem("KELVIN PARA CELSIUS"); }
-            if( contador_numerico == 10 ) { txt_escolha_de_operacao.addItem("KELVIN PARA FAHRENHEIT"); }
-            if( contador_numerico == 11 ) { txt_escolha_de_operacao.addItem("FAHRENHEIT PARA CELSIUS"); }
-            if( contador_numerico == 12 ) { txt_escolha_de_operacao.addItem("FAHRENHEIT PARA KELVIN"); }
+            if( contador_numerico == 1 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - CALCULO DE MMC"); }
+            if( contador_numerico == 2 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - SOMAR FRAÇÃO"); }
+            if( contador_numerico == 3 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - SUBTRAIR FRAÇÃO"); }
+            if( contador_numerico == 4 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - MULTIPLICAR FRAÇÃO"); }
+            if( contador_numerico == 5 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - DIVIDIR FRAÇÃO"); }
+            if( contador_numerico == 6 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - CALCULO DE IMC"); }
+            if( contador_numerico == 7 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - CONVERTER CELSIUS PARA KELVIN"); }
+            if( contador_numerico == 8 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - CELSIUS PARA FAHRENHEIT"); }
+            if( contador_numerico == 9 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - KELVIN PARA CELSIUS"); }
+            if( contador_numerico == 10 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - KELVIN PARA FAHRENHEIT"); }
+            if( contador_numerico == 11 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - FAHRENHEIT PARA CELSIUS"); }
+            if( contador_numerico == 12 ) { txt_escolha_de_operacao.addItem(String.valueOf(contador_numerico)+" - FAHRENHEIT PARA KELVIN"); }
             contador_numerico++;
             
         }
@@ -78,14 +92,17 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         txt_resultado = new javax.swing.JLabel();
-        txt_numerador_valor1 = new javax.swing.JTextField();
-        txt_campo_temperatura = new javax.swing.JTextField();
-        txt_denominador_valor2 = new javax.swing.JTextField();
         txt_denominador_valor1 = new javax.swing.JTextField();
-        txt_botao_calculo = new javax.swing.JButton();
-        txt_escolha_de_operacao = new javax.swing.JComboBox<>();
-        txt_botao_limpar_liberar = new javax.swing.JButton();
+        txt_operacao_solicitada = new javax.swing.JLabel();
+        txt_numerador_valor1 = new javax.swing.JTextField();
         txt_numerador_valor2 = new javax.swing.JTextField();
+        txt_denominador_valor2 = new javax.swing.JTextField();
+        txt_campo_peso = new javax.swing.JTextField();
+        txt_campo_altura = new javax.swing.JTextField();
+        txt_campo_temperatura = new javax.swing.JTextField();
+        txt_escolha_de_operacao = new javax.swing.JComboBox<>();
+        txt_botao_calculo = new javax.swing.JButton();
+        txt_botao_limpar_liberar = new javax.swing.JButton();
         txt_barra_de_menu_principal = new javax.swing.JMenuBar();
         txt_menu_geral = new javax.swing.JMenu();
         txt_sub_item_sair = new javax.swing.JMenuItem();
@@ -95,47 +112,107 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("PROJETO DE CALCULO");
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- EXIBIÇÃO GERAL -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         txt_resultado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/calculator_link.png"))); // NOI18N
         txt_resultado.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- RESULTADO -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
+        txt_denominador_valor1.setToolTipText("");
+        txt_denominador_valor1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- DENOMINADOR 01 -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_denominador_valor1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_denominador_valor1KeyPressed(evt);
+            }
+        });
+
+        txt_operacao_solicitada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/calculator.png"))); // NOI18N
+        txt_operacao_solicitada.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- \"OPERAÇÃO SOLICITADA\" -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+
         txt_numerador_valor1.setToolTipText("");
         txt_numerador_valor1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- NUMERADOR 001 -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_numerador_valor1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_numerador_valor1KeyPressed(evt);
+            }
+        });
 
-        txt_campo_temperatura.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- TEMPERATURA -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_numerador_valor2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- NUMERADOR 002 -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_numerador_valor2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_numerador_valor2KeyPressed(evt);
+            }
+        });
 
         txt_denominador_valor2.setToolTipText("");
         txt_denominador_valor2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- DENOMINADOR 02 -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_denominador_valor2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_denominador_valor2KeyPressed(evt);
+            }
+        });
 
-        txt_denominador_valor1.setToolTipText("");
-        txt_denominador_valor1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- DENOMINADOR 01 -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_campo_peso.setToolTipText("");
+        txt_campo_peso.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- PESO -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_campo_peso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_campo_pesoKeyPressed(evt);
+            }
+        });
 
-        txt_botao_calculo.setBackground(new java.awt.Color(153, 255, 153));
-        txt_botao_calculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/calculator_add.png"))); // NOI18N
-        txt_botao_calculo.setText("CALCULAR");
-        txt_botao_calculo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        txt_botao_calculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_botao_calculoActionPerformed(evt);
+        txt_campo_altura.setToolTipText("");
+        txt_campo_altura.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- ALTURA -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_campo_altura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_campo_alturaKeyPressed(evt);
+            }
+        });
+
+        txt_campo_temperatura.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- TEMPERATURA -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_campo_temperatura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_campo_temperaturaKeyPressed(evt);
             }
         });
 
         txt_escolha_de_operacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         txt_escolha_de_operacao.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- OPERAÇÃO -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
+        txt_botao_calculo.setBackground(new java.awt.Color(153, 255, 153));
+        txt_botao_calculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/calculator_add.png"))); // NOI18N
+        txt_botao_calculo.setText("CALCULAR");
+        txt_botao_calculo.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "... ATALHO - [ \"ENTER\" ] ...", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        txt_botao_calculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_botao_calculoActionPerformed(evt);
+            }
+        });
+        txt_botao_calculo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_botao_calculoKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_botao_calculoKeyReleased(evt);
+            }
+        });
+
         txt_botao_limpar_liberar.setBackground(new java.awt.Color(153, 153, 255));
         txt_botao_limpar_liberar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/calculator_delete.png"))); // NOI18N
         txt_botao_limpar_liberar.setText("LIMPAR E LIBERAR");
-        txt_botao_limpar_liberar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        txt_botao_limpar_liberar.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "... ATALHO - [ \"SETA DIREITA\" ] ...", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         txt_botao_limpar_liberar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_botao_limpar_liberarActionPerformed(evt);
             }
         });
-
-        txt_numerador_valor2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "- NUMERADOR 002 -", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,33 +221,35 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(txt_campo_temperatura)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txt_numerador_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(txt_numerador_valor2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txt_denominador_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txt_denominador_valor2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txt_operacao_solicitada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_resultado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txt_botao_limpar_liberar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(txt_botao_calculo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_escolha_de_operacao, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_campo_temperatura, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txt_numerador_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_numerador_valor2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txt_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(txt_denominador_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_denominador_valor2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txt_campo_peso, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_campo_altura, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_escolha_de_operacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_botao_calculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_botao_limpar_liberar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(txt_operacao_solicitada, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_resultado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -178,8 +257,12 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
                     .addComponent(txt_numerador_valor2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_denominador_valor2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_denominador_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_denominador_valor1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_denominador_valor2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_campo_peso, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_campo_altura, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_campo_temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -247,8 +330,682 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
     
     // BOTÃO CALCULAR:
     private void txt_botao_calculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_botao_calculoActionPerformed
+  
+        int confirmar_calculo = 0;
+        int operacao1 = 0;
+        String operacao2 = "";
+        confirmar_calculo = 0;
+        operacao1 = txt_escolha_de_operacao.getSelectedIndex();
+        
+        if( operacao1 == 0 ) { operacao2 = "'OPERAÇÃO NULA'"; }
+        if( operacao1 == 1 ) { operacao2 = "CALCULO DE MMC"; }
+        if( operacao1 == 2 ) { operacao2 = "SOMAR FRAÇÃO"; }
+        if( operacao1 == 3 ) { operacao2 = "SUBTRAIR FRAÇÃO"; }
+        if( operacao1 == 4 ) { operacao2 = "MULTIPLICAR FRAÇÃO"; }
+        if( operacao1 == 5 ) { operacao2 = "DIVIDIR FRAÇÃO"; }
+        if( operacao1 == 6 ) { operacao2 = "CALCULO DE IMC"; }
+        if( operacao1 == 7 ) { operacao2 = "CONVERTER CELSIUS PARA KELVIN"; }
+        if( operacao1 == 8 ) { operacao2 = "CELSIUS PARA FAHRENHEIT"; }
+        if( operacao1 == 9 ) { operacao2 = "KELVIN PARA CELSIUS"; }
+        if( operacao1 == 10 ) { operacao2 = "KELVIN PARA FAHRENHEIT"; }
+        if( operacao1 == 11 ) { operacao2 = "FAHRENHEIT PARA CELSIUS"; }
+        if( operacao1 == 12 ) { operacao2 = "FAHRENHEIT PARA KELVIN"; }
+        
+        confirmar_calculo = JOptionPane.showConfirmDialog(null, "DESEJA CONTINUAR COM A(O) " + operacao2 + " ?\n"
+                + "PRECIONE 'ESC' OU CLICK EM 'NÃO' PARA VOLTAR!");
+         
+        if ( confirmar_calculo == 0 ) {
 
-        JOptionPane.showMessageDialog(null, "ESTA FUNÇÃO ESTÁ EM DESENVOLVIMENTO!", "ADVERTÊNCIA:", 2);
+            // "CALCULO NULO":
+            if( operacao1 == 0 ) { 
+                
+                JOptionPane.showMessageDialog(null, "ESCOLHA UMA OPÇÃO DE CALCULO!", "ADVERTÊNCIA:", 2);
+                
+            }
+
+            // CALCULO DE MMC:
+            if( operacao1 == 1 ) { 
+                
+                if( !txt_denominador_valor1.getText().trim().equals("") && !txt_denominador_valor2.getText().trim().equals("")) {
+                    
+                    try {
+                       
+                        int a = Integer.parseInt(txt_denominador_valor1.getText());
+                        int b = Integer.parseInt(txt_denominador_valor2.getText());
+                        int denominador1 = Integer.parseInt(txt_denominador_valor1.getText());
+                        int denominador2 = Integer.parseInt(txt_denominador_valor2.getText());
+
+                        while ( b != 0 ) {
+
+                            int r = a % b;
+                            a = b;
+                            b = r;
+
+                        }
+
+                        txt_operacao_solicitada.setText(" MMC"); 
+                        txt_resultado.setText(String.valueOf(denominador1 * (denominador2 / a ))); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_denominador_valor1.setText("");
+                        txt_denominador_valor2.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_denominador_valor1.setText("");
+                        txt_denominador_valor2.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - DENOMINADOR 01,\n"
+                            + " - DENOMINADOR 02.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+            // MÉTODO PARA SOMA DE FRAÇÕES:
+            if( operacao1 == 2 ) { 
+                
+                if( !txt_denominador_valor1.getText().trim().equals("") && !txt_numerador_valor1.getText().trim().equals("") && !txt_numerador_valor2.getText().trim().equals("")) {
+                    
+                    try {
+                       
+                        int result_aux;
+                        int result1;
+                        double result2;
+
+                        result1 = Integer.parseInt(txt_numerador_valor1.getText()) + Integer.parseInt(txt_numerador_valor2.getText());
+                        result2 = result1 / Integer.parseInt(txt_denominador_valor1.getText());
+                        result_aux = (int)result2;
+
+                        txt_operacao_solicitada.setText(" SOMA DE FRAÇÃO"); 
+                        txt_resultado.setText(String.valueOf(result_aux)); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_numerador_valor1.setText("");
+                        txt_numerador_valor2.setText("");
+                        txt_denominador_valor1.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_numerador_valor1.setText("");
+                        txt_numerador_valor2.setText("");
+                        txt_denominador_valor1.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - NUMERADOR 01,\n"
+                            + " - NUMERADOR 02,\n"
+                            + " - DENOMINADOR 01.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+            // MÉTODO PARA SUBTRAÇÃO DE FRAÇÕES:
+            if( operacao1 == 3 ) { 
+                
+                if( !txt_denominador_valor1.getText().trim().equals("") && !txt_numerador_valor1.getText().trim().equals("") && !txt_numerador_valor2.getText().trim().equals("")) {
+                    
+                    try {
+                       
+                        int result_aux;
+                        int result1;
+                        double result2;
+
+                        result1 = Integer.parseInt(txt_numerador_valor1.getText()) - Integer.parseInt(txt_numerador_valor2.getText());
+                        result2 = result1 / Integer.parseInt(txt_denominador_valor1.getText());
+                        result_aux = (int)result2;
+
+                        txt_operacao_solicitada.setText(" SUBTRAÇÃO DE FRAÇÃO"); 
+                        txt_resultado.setText(String.valueOf(result_aux)); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_numerador_valor1.setText("");
+                        txt_numerador_valor2.setText("");
+                        txt_denominador_valor1.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_numerador_valor1.setText("");
+                        txt_numerador_valor2.setText("");
+                        txt_denominador_valor1.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - NUMERADOR 01,\n"
+                            + " - NUMERADOR 02,\n"
+                            + " - DENOMINADOR 01.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+            // MÉTODO PARA MULTIPLICAÇÃO DE FRAÇÕES:
+            if( operacao1 == 4 ) { 
+                
+                if( !txt_denominador_valor1.getText().trim().equals("") && !txt_denominador_valor2.getText().trim().equals("") && !txt_numerador_valor1.getText().trim().equals("") && !txt_numerador_valor2.getText().trim().equals("")) {
+                    
+                    try {
+                       
+                        int numerador;
+                        int denominador;
+                        double result;
+
+                        numerador = Integer.parseInt(txt_numerador_valor1.getText()) * Integer.parseInt(txt_numerador_valor2.getText());
+                        denominador = Integer.parseInt(txt_denominador_valor1.getText()) * Integer.parseInt(txt_denominador_valor2.getText());
+                        result = numerador / denominador;
+                        result = (int) result;
+
+                        txt_operacao_solicitada.setText(" MULTIPLICAÇÃO DE FRAÇÃO"); 
+                        txt_resultado.setText(String.valueOf(result)); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_numerador_valor1.setText("");
+                        txt_numerador_valor2.setText("");
+                        txt_denominador_valor1.setText("");
+                        txt_denominador_valor2.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_numerador_valor1.setText("");
+                        txt_numerador_valor2.setText("");
+                        txt_denominador_valor1.setText("");
+                        txt_denominador_valor2.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - NUMERADOR 01,\n"
+                            + " - NUMERADOR 02,\n"
+                            + " - DENOMINADOR 01,\n"
+                            + " - DENOMINADOR 02.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+            // MÉTODO PARA DIVISÃO DE FRAÇÕES:
+            if( operacao1 == 5 ) { 
+                
+                if( !txt_denominador_valor1.getText().trim().equals("") && !txt_denominador_valor2.getText().trim().equals("") && !txt_numerador_valor1.getText().trim().equals("") && !txt_numerador_valor2.getText().trim().equals("")) {
+                    
+                    try {
+                        
+                        int numerador;
+                        int denominador;
+                        double result;
+
+                        numerador = Integer.parseInt(txt_numerador_valor1.getText()) * Integer.parseInt(txt_denominador_valor2.getText());
+                        denominador = Integer.parseInt(txt_denominador_valor1.getText()) * Integer.parseInt(txt_numerador_valor2.getText());
+                        result = numerador / denominador;
+                        result = (int) result;
+
+                        txt_operacao_solicitada.setText(" DIVISÃO DE FRAÇÃO"); 
+                        txt_resultado.setText(String.valueOf(result)); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_numerador_valor1.setText("");
+                        txt_numerador_valor2.setText("");
+                        txt_denominador_valor1.setText("");
+                        txt_denominador_valor2.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_numerador_valor1.setText("");
+                        txt_numerador_valor2.setText("");
+                        txt_denominador_valor1.setText("");
+                        txt_denominador_valor2.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - NUMERADOR 01,\n"
+                            + " - NUMERADOR 02,\n"
+                            + " - DENOMINADOR 01,\n"
+                            + " - DENOMINADOR 02.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+            // MÉTODO PARA O CÁLCULO DE IMC ( ÍNDICE DE MASSA CORPORAL ):
+            if( operacao1 == 6 ) { 
+                
+                if( !txt_campo_peso.getText().trim().equals("") && !txt_campo_altura.getText().trim().equals("") ) {
+                    
+                    try {
+                        
+                        double resultado;
+                        String situacao_peso_corporal = "";
+                        resultado = Double.valueOf(txt_campo_peso.getText()) / ( Double.valueOf(txt_campo_altura.getText()) * Double.valueOf(txt_campo_altura.getText()) );
+                        BigDecimal resultado_arredondado = new BigDecimal(resultado).setScale(2, RoundingMode.HALF_EVEN);
+                        
+                        if( resultado < 18.5 ) { situacao_peso_corporal = "ABAIXO DO PESO!"; }
+                        if( resultado >= 18.5 && resultado <= 24.9 ) { situacao_peso_corporal = "PESO NORMAL!"; }
+                        if( resultado >= 25 && resultado <= 29.9 ) { situacao_peso_corporal = "SOBREPESO!"; }
+                        if( resultado >= 30 && resultado <= 34.9 ) { situacao_peso_corporal = "OBESIDADE ( GRAU I )!"; }
+                        if( resultado >= 35 && resultado <= 39.9 ) { situacao_peso_corporal = "OBESIDADE ( GRAU II )!"; }
+                        if( resultado >= 40 ) { situacao_peso_corporal = "OBESIDADE MÓRBIDA ( GRAU III )!"; }
+                        
+                        txt_operacao_solicitada.setText(" CALCULO DE IMC"); 
+                        txt_resultado.setText(String.valueOf(resultado_arredondado) + " - " + situacao_peso_corporal); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_peso.setText("");
+                        txt_campo_altura.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_peso.setText("");
+                        txt_campo_altura.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - PESO,\n"
+                            + " - ALTURA.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+            // MÉTODO PARA O CÁLCULO DE TEMPERATURA:
+            // CELSIUS PARA KELVIN:
+            if( operacao1 == 7 ) { 
+                
+                if( !txt_campo_temperatura.getText().trim().equals("") ) {
+                    
+                    try {
+                        
+                        double k;
+                        k = Double.valueOf(txt_campo_temperatura.getText()) + 273.15;
+                        BigDecimal resultado_arredondado = new BigDecimal(k).setScale(2, RoundingMode.HALF_EVEN);
+                        
+                        txt_operacao_solicitada.setText(" CELSIUS PARA KELVIN"); 
+                        txt_resultado.setText(String.valueOf(resultado_arredondado)); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - TEMPERATURA.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+            // MÉTODO PARA O CÁLCULO DE TEMPERATURA:
+            // CELSIUS PARA FAHRENHEIT:
+            if( operacao1 == 8 ) { 
+                
+                if( !txt_campo_temperatura.getText().trim().equals("") ) {
+                    
+                    try {
+                        
+                        double f;
+                        double aux;
+                        f = ( Double.valueOf(txt_campo_temperatura.getText()) * 9/5 ) + 32;
+                        BigDecimal resultado_arredondado = new BigDecimal(f).setScale(2, RoundingMode.HALF_EVEN);
+                        
+                        txt_operacao_solicitada.setText(" CELSIUS PARA FAHRENHEIT"); 
+                        txt_resultado.setText(String.valueOf(resultado_arredondado)); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - TEMPERATURA.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+            // MÉTODO PARA O CÁLCULO DE TEMPERATURA:
+            // KELVIN PARA CELSIUS:
+            if( operacao1 == 9 ) { 
+                
+                if( !txt_campo_temperatura.getText().trim().equals("") ) {
+                    
+                    try {
+                        
+                        double celcius;
+                        celcius = Double.valueOf(txt_campo_temperatura.getText()) - 273.15;
+                        BigDecimal resultado_arredondado = new BigDecimal(celcius).setScale(2, RoundingMode.HALF_EVEN);
+                        
+                        txt_operacao_solicitada.setText(" KELVIN PARA CELSIUS"); 
+                        txt_resultado.setText(String.valueOf(resultado_arredondado)); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - TEMPERATURA.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+            // MÉTODO PARA O CÁLCULO DE TEMPERATURA:
+            // KELVIN PARA FAHRENHEIT:
+            if( operacao1 == 10 ) { 
+                
+                if( !txt_campo_temperatura.getText().trim().equals("") ) {
+                    
+                    try {
+                        
+                        double Fahrenheit;
+                        Fahrenheit = ( Double.valueOf(txt_campo_temperatura.getText()) - 273.15 ) * 9/5 + 32;                        
+                        BigDecimal resultado_arredondado = new BigDecimal(Fahrenheit).setScale(2, RoundingMode.HALF_EVEN);
+                        
+                        txt_operacao_solicitada.setText(" KELVIN PARA FAHRENHEIT"); 
+                        txt_resultado.setText(String.valueOf(resultado_arredondado)); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - TEMPERATURA.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+            // MÉTODO PARA O CÁLCULO DE TEMPERATURA:
+            // FAHRENHEIT PARA CELSIUS:
+            if( operacao1 == 11 ) { 
+                
+                if( !txt_campo_temperatura.getText().trim().equals("") ) {
+                    
+                    try {
+                        
+                        double celcius;
+                        celcius = ( Double.valueOf(txt_campo_temperatura.getText()) - 32 ) * 5/9;                        
+                        BigDecimal resultado_arredondado = new BigDecimal(celcius).setScale(2, RoundingMode.HALF_EVEN);
+                        
+                        txt_operacao_solicitada.setText(" FAHRENHEIT PARA CELSIUS"); 
+                        txt_resultado.setText(String.valueOf(resultado_arredondado)); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - TEMPERATURA.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+            // MÉTODO PARA O CÁLCULO DE TEMPERATURA:
+            // FAHRENHEIT PARA KELVIN:
+            if( operacao1 == 12 ) { 
+                
+                if( !txt_campo_temperatura.getText().trim().equals("") ) {
+                    
+                    try {
+                        
+                        double kelvin;
+                        kelvin = ( Double.valueOf(txt_campo_temperatura.getText()) - 32 ) * 5/9 + 273.15;
+                        BigDecimal resultado_arredondado = new BigDecimal(kelvin).setScale(2, RoundingMode.HALF_EVEN);
+                        
+                        txt_operacao_solicitada.setText(" FAHRENHEIT PARA KELVIN"); 
+                        txt_resultado.setText(String.valueOf(resultado_arredondado)); 
+                        controle_botao = 1;
+                        
+                        txt_botao_calculo.setEnabled(false);
+                        txt_escolha_de_operacao.setEnabled(false);
+                        txt_denominador_valor1.setEditable(false);
+                        txt_denominador_valor2.setEditable(false);
+                        txt_numerador_valor1.setEditable(false);
+                        txt_numerador_valor2.setEditable(false);
+                        txt_campo_temperatura.setEditable(false);
+                        txt_campo_peso.setEditable(false);
+                        txt_campo_altura.setEditable(false);
+                        txt_botao_limpar_liberar.setEnabled(true);
+                        
+                    } catch( NumberFormatException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                } catch( NullPointerException e) {
+                        
+                        JOptionPane.showMessageDialog(null, "PREENCHA OS CAMPOS COM DADOS CORRETOS!", "ADVERTÊNCIA:", 2);
+                        txt_campo_temperatura.setText("");
+                        
+                }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(null, "PREENCHA TODOS OS CAMPOS NECESSÁRIOS:\n"
+                            + " - TEMPERATURA.", "ADVERTÊNCIA:", 2);
+                    
+                }
+            
+            }
+            
+        }
         
     }//GEN-LAST:event_txt_botao_calculoActionPerformed
 
@@ -256,8 +1013,29 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
     // BOTÃO LIMPAR E LIBERAR:
     private void txt_botao_limpar_liberarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_botao_limpar_liberarActionPerformed
 
-        JOptionPane.showMessageDialog(null, "ESTA FUNÇÃO ESTÁ EM DESENVOLVIMENTO!", "ADVERTÊNCIA:", 2);
-        
+        int confirmar_limpar_e_liberar = 0;
+        confirmar_limpar_e_liberar = 0;
+        confirmar_limpar_e_liberar = JOptionPane.showConfirmDialog(null, "LIBERAR NOVO CALCULO ?\n"
+                + "PRECIONE 'ESC' OU CLICK EM 'NÃO' PARA VOLTAR!");
+
+        if ( confirmar_limpar_e_liberar == 0 ) {
+
+            txt_resultado.setText(null);
+            txt_operacao_solicitada.setText(null);
+            txt_botao_calculo.setEnabled(true);
+            txt_escolha_de_operacao.setEnabled(true);
+            txt_denominador_valor1.setEditable(true);
+            txt_denominador_valor2.setEditable(true);
+            txt_numerador_valor1.setEditable(true);
+            txt_numerador_valor2.setEditable(true);
+            txt_campo_temperatura.setEditable(true);
+            txt_campo_peso.setEditable(true);
+            txt_campo_altura.setEditable(true);
+            txt_botao_limpar_liberar.setEnabled(false);
+            controle_botao = 0;
+
+        }
+
     }//GEN-LAST:event_txt_botao_limpar_liberarActionPerformed
 
     
@@ -295,6 +1073,297 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
                 + " - FAHRENHEIT PARA KELVIN.", "INFORMAÇÃO:", 1);
         
     }//GEN-LAST:event_txt_sub_item_infoActionPerformed
+
+    
+    // EVENTO "KEYRELEASED" - "TXT_BOTÃO_CALCULO":
+    private void txt_botao_calculoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_botao_calculoKeyReleased
+
+        // IMPLEMENTE SEU CÓDIGO AQUI!
+        
+    }//GEN-LAST:event_txt_botao_calculoKeyReleased
+
+    
+    // EVENTO "KEYPRESSED" - "TXT_BOTÃO_CALCULO":
+    private void txt_botao_calculoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_botao_calculoKeyPressed
+
+        // IMPLEMENTE SEU CÓDIGO AQUI!
+
+    }//GEN-LAST:event_txt_botao_calculoKeyPressed
+
+    
+    // EVENTO "KEYRELEASED" - "FORM":
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        
+        // IMPLEMENTE SEU CÓDIGO AQUI!
+        
+    }//GEN-LAST:event_formKeyReleased
+
+    
+    // EVENTO "KEYPRESSED" - "FORM":
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        
+        // IMPLEMENTE SEU CÓDIGO AQUI!
+        
+    }//GEN-LAST:event_formKeyPressed
+
+    
+    // EVENTO "KEYPRESSED" - TXT_NUMERADOR_VALOR1:
+    private void txt_numerador_valor1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numerador_valor1KeyPressed
+        
+        int controlador_escolha_operacao = txt_escolha_de_operacao.getSelectedIndex();
+        
+        if( controle_botao == 0 ) {
+
+            try {
+
+                if( evt.getKeyChar() == KeyEvent.VK_ENTER) { txt_botao_calculo.doClick(); }
+                if( evt.getKeyCode() == 38) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao+1); }
+                if( evt.getKeyCode() == 40) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao-1); }        
+
+            } catch( IllegalArgumentException e ) {
+
+                if( controlador_escolha_operacao == 0 ) { controlador_escolha_operacao = 12; }
+                if( controlador_escolha_operacao == 12 ) { controlador_escolha_operacao = 0; }
+
+            }
+
+        }
+        
+        if( controle_botao == 1 ) {
+
+            try {
+
+                if( evt.getKeyCode() == 39 ) { txt_botao_limpar_liberar.doClick(); }
+
+            } catch( IllegalArgumentException e ) {
+
+            }
+
+        }
+        
+    }//GEN-LAST:event_txt_numerador_valor1KeyPressed
+
+    
+    // EVENTO "KEYPRESSED" - TXT_NUMERADOR_VALOR2:
+    private void txt_numerador_valor2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numerador_valor2KeyPressed
+        
+        int controlador_escolha_operacao = txt_escolha_de_operacao.getSelectedIndex();
+        
+        if( controle_botao == 0 ) {
+
+            try {
+
+                if( evt.getKeyChar() == KeyEvent.VK_ENTER) { txt_botao_calculo.doClick(); }
+                if( evt.getKeyCode() == 38) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao+1); }
+                if( evt.getKeyCode() == 40) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao-1); }        
+
+            } catch( IllegalArgumentException e ) {
+
+                if( controlador_escolha_operacao == 0 ) { controlador_escolha_operacao = 12; }
+                if( controlador_escolha_operacao == 12 ) { controlador_escolha_operacao = 0; }
+
+            }
+
+        }
+        
+        if( controle_botao == 1 ) {
+
+            try {
+
+                if( evt.getKeyCode() == 39 ) { txt_botao_limpar_liberar.doClick(); }
+
+            } catch( IllegalArgumentException e ) {
+
+            }
+
+        }
+        
+    }//GEN-LAST:event_txt_numerador_valor2KeyPressed
+
+    
+    // EVENTO "KEYPRESSED" - TXT_DENOMINADOR_VALOR1:
+    private void txt_denominador_valor1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_denominador_valor1KeyPressed
+        
+        int controlador_escolha_operacao = txt_escolha_de_operacao.getSelectedIndex();
+        
+        if( controle_botao == 0 ) {
+
+            try {
+
+                if( evt.getKeyChar() == KeyEvent.VK_ENTER) { txt_botao_calculo.doClick(); }
+                if( evt.getKeyCode() == 38) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao+1); }
+                if( evt.getKeyCode() == 40) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao-1); }        
+
+            } catch( IllegalArgumentException e ) {
+
+                if( controlador_escolha_operacao == 0 ) { controlador_escolha_operacao = 12; }
+                if( controlador_escolha_operacao == 12 ) { controlador_escolha_operacao = 0; }
+
+            }
+
+        }
+        
+        if( controle_botao == 1 ) {
+
+            try {
+
+                if( evt.getKeyCode() == 39 ) { txt_botao_limpar_liberar.doClick(); }
+
+            } catch( IllegalArgumentException e ) {
+
+            }
+
+        }
+        
+    }//GEN-LAST:event_txt_denominador_valor1KeyPressed
+
+    
+    // EVENTO "KEYPRESSED" - TXT_DENOMINADOR_VALOR2:
+    private void txt_denominador_valor2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_denominador_valor2KeyPressed
+        
+        int controlador_escolha_operacao = txt_escolha_de_operacao.getSelectedIndex();
+        
+        if( controle_botao == 0 ) {
+
+            try {
+
+                if( evt.getKeyChar() == KeyEvent.VK_ENTER) { txt_botao_calculo.doClick(); }
+                if( evt.getKeyCode() == 38) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao+1); }
+                if( evt.getKeyCode() == 40) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao-1); }        
+
+            } catch( IllegalArgumentException e ) {
+
+                if( controlador_escolha_operacao == 0 ) { controlador_escolha_operacao = 12; }
+                if( controlador_escolha_operacao == 12 ) { controlador_escolha_operacao = 0; }
+
+            }
+
+        }
+        
+        if( controle_botao == 1 ) {
+
+            try {
+
+                if( evt.getKeyCode() == 39 ) { txt_botao_limpar_liberar.doClick(); }
+
+            } catch( IllegalArgumentException e ) {
+
+            }
+
+        }
+        
+    }//GEN-LAST:event_txt_denominador_valor2KeyPressed
+
+    
+    // EVENTO "KEYPRESSED" - TXT_CAMPO_TEMPERATURA:
+    private void txt_campo_temperaturaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_campo_temperaturaKeyPressed
+        
+        int controlador_escolha_operacao = txt_escolha_de_operacao.getSelectedIndex();
+        
+        if( controle_botao == 0 ) {
+
+            try {
+
+                if( evt.getKeyChar() == KeyEvent.VK_ENTER) { txt_botao_calculo.doClick(); }
+                if( evt.getKeyCode() == 38) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao+1); }
+                if( evt.getKeyCode() == 40) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao-1); }        
+
+            } catch( IllegalArgumentException e ) {
+
+                if( controlador_escolha_operacao == 0 ) { controlador_escolha_operacao = 12; }
+                if( controlador_escolha_operacao == 12 ) { controlador_escolha_operacao = 0; }
+
+            }
+
+        }
+        
+        if( controle_botao == 1 ) {
+
+            try {
+
+                if( evt.getKeyCode() == 39 ) { txt_botao_limpar_liberar.doClick(); }
+
+            } catch( IllegalArgumentException e ) {
+
+            }
+
+        }
+        
+    }//GEN-LAST:event_txt_campo_temperaturaKeyPressed
+
+    
+    // EVENTO "KEYPRESSED" - TXT_CAMPO_PESO:
+    private void txt_campo_pesoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_campo_pesoKeyPressed
+         
+        int controlador_escolha_operacao = txt_escolha_de_operacao.getSelectedIndex();
+        
+        if( controle_botao == 0 ) {
+
+            try {
+
+                if( evt.getKeyChar() == KeyEvent.VK_ENTER) { txt_botao_calculo.doClick(); }
+                if( evt.getKeyCode() == 38) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao+1); }
+                if( evt.getKeyCode() == 40) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao-1); }        
+
+            } catch( IllegalArgumentException e ) {
+
+                if( controlador_escolha_operacao == 0 ) { controlador_escolha_operacao = 12; }
+                if( controlador_escolha_operacao == 12 ) { controlador_escolha_operacao = 0; }
+
+            }
+
+        }
+        
+        if( controle_botao == 1 ) {
+
+            try {
+
+                if( evt.getKeyCode() == 39 ) { txt_botao_limpar_liberar.doClick(); }
+
+            } catch( IllegalArgumentException e ) {
+
+            }
+
+        }
+        
+    }//GEN-LAST:event_txt_campo_pesoKeyPressed
+
+    
+    // EVENTO "KEYPRESSED" - TXT_CAMPO_ALTURA:
+    private void txt_campo_alturaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_campo_alturaKeyPressed
+        
+        int controlador_escolha_operacao = txt_escolha_de_operacao.getSelectedIndex();
+        
+        if( controle_botao == 0 ) {
+
+            try {
+
+                if( evt.getKeyChar() == KeyEvent.VK_ENTER) { txt_botao_calculo.doClick(); }
+                if( evt.getKeyCode() == 38) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao+1); }
+                if( evt.getKeyCode() == 40) { txt_escolha_de_operacao.setSelectedIndex(controlador_escolha_operacao-1); }        
+
+            } catch( IllegalArgumentException e ) {
+
+                if( controlador_escolha_operacao == 0 ) { controlador_escolha_operacao = 12; }
+                if( controlador_escolha_operacao == 12 ) { controlador_escolha_operacao = 0; }
+
+            }
+
+        }
+        
+        if( controle_botao == 1 ) {
+
+            try {
+
+                if( evt.getKeyCode() == 39 ) { txt_botao_limpar_liberar.doClick(); }
+
+            } catch( IllegalArgumentException e ) {
+
+            }
+
+        }
+        
+    }//GEN-LAST:event_txt_campo_alturaKeyPressed
 
     
     /**
@@ -335,17 +1404,11 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuBar txt_barra_de_menu_principal;
-    private javax.swing.JButton txt_botao_calcular;
     private javax.swing.JButton txt_botao_calculo;
-    private javax.swing.JButton txt_botao_limpar_e_liberar;
     private javax.swing.JButton txt_botao_limpar_liberar;
-    private javax.swing.JTextField txt_campo_potencia_base;
-    private javax.swing.JTextField txt_campo_potencia_expoente;
-    private javax.swing.JTextField txt_campo_radiciacao;
-    private javax.swing.JLabel txt_campo_resultado;
+    private javax.swing.JTextField txt_campo_altura;
+    private javax.swing.JTextField txt_campo_peso;
     private javax.swing.JTextField txt_campo_temperatura;
-    private javax.swing.JTextField txt_campo_valor1;
-    private javax.swing.JTextField txt_campo_valor2;
     private javax.swing.JTextField txt_denominador_valor1;
     private javax.swing.JTextField txt_denominador_valor2;
     private javax.swing.JComboBox<String> txt_escolha_de_operacao;
@@ -353,8 +1416,7 @@ public class ProjetoPOO_Java_Object_Form extends javax.swing.JFrame {
     private javax.swing.JMenu txt_menu_sobre;
     private javax.swing.JTextField txt_numerador_valor1;
     private javax.swing.JTextField txt_numerador_valor2;
-    private javax.swing.JComboBox<String> txt_operacao;
-    private javax.swing.JPanel txt_painel_principal;
+    private javax.swing.JLabel txt_operacao_solicitada;
     private javax.swing.JLabel txt_resultado;
     private javax.swing.JMenuItem txt_sub_item_info;
     private javax.swing.JMenuItem txt_sub_item_sair;
